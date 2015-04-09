@@ -1,0 +1,95 @@
+# Age-table-1
+Wrote some JQuery code to add +1 to numbers in a table. Also added a feature to add your own number to the table. 
+
+<!DOCTYPE html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Affirma Developer Internship</title>
+<style>
+table {
+	width: 250px;
+	border: solid #B8B8E6 1px;
+	border-radius: 5px 5px;
+	padding: 10px;
+}
+td {
+	-webkit-transition: background-color .3s;
+	transition: background-color .3s;
+	border-top: solid #B8B8E6 1px;
+	padding: 5px;
+}
+td:hover {
+	background-color: #B8B8E6;
+}
+button {
+	border-radius: 5px 5px;
+	border: none;
+	background-color: #B8B8E6;
+	padding: 3px;
+}
+button:hover {
+	background-color: #A6A6CF;
+}
+button:focus {
+	outline: 0;
+}
+textarea {
+	border: solid #B8B8E6 1px;
+	border-radius: 5px 5px;
+	width: 35px;
+}
+textarea:focus {
+	outline: 0;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+$( function() {
+    $('#add1').click( function() {
+        $('td:last-child').each( function() {
+            $(this).text( parseInt( $(this).text(), 10) + 1 );
+        });
+    });
+    $('#submit_button').click(function(){
+        var addTo = parseInt($('textarea').val(), 10);    
+        if (!isNaN(addTo)){
+            $('tbody').append('<tr><td> You </td><td>' + addTo + '</td></tr>');
+        }
+    });
+    
+});
+
+</script>
+</head>
+<body>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Rosalyn</td>
+      <td>24 </td>
+    </tr>
+    <tr>
+      <td>Juan</td>
+      <td>25 </td>
+    </tr>
+    <tr>
+      <td>Mako</td>
+      <td>2 </td>
+    </tr>
+  </tbody>
+</table>
+<div>
+  <button id="add1"> + 1 </button>
+</div>
+What is your age?:
+<textarea></textarea>
+<button id="submit_button"> Submit </button>
+</body>
+</html>
